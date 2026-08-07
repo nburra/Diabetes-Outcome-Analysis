@@ -1,18 +1,242 @@
-# Diabetes-Outcome-Analysis
-This project performs an exploratory data analysis and predictive modeling on a diabetes dataset to determine certain factors that affect diabetes outcomes. The analysis involves examining key patient indicators such as BP, Insulin, BMI, and Age to understand their relationship with diabetes diagnosis.
+# Diabetes Risk Prediction Analysis
 
-## Loading the data
-I loaded the data using pandas, generating a summary statistics chart to understand the data's organization and potential quality issues.
+## Overview
 
-## EDA
-I performed a univariate analysis of the blood pressure indicator in the data. The displayed histogram showed that there was a large amount of values between 60 and 80. This is the most common values of blood pressure in the data set and correlates to the standard of blood pressure levels which is 120/80. There are some values of 0 in the blood pressure category that are due to NULL values, this may skew the histogram.
+This project develops a machine learning pipeline to analyze patient health indicators and predict diabetes outcomes using clinical and demographic features.
 
-I also performed a pairwise analysis of blood pressure and BMI to determine their correlation. It showed that people with higher BMI will tend to have higher blood pressures. However, as it is seen in the graphs, lower BMI individuals can still have stable blood pressures.
+The analysis explores relationships between physiological factors such as glucose levels, BMI, blood pressure, insulin, and age to understand key drivers associated with diabetes risk.
 
-## Pre-processing
-I evaluated the data for missing or invalid values and handled it using median imputation. More specifically, there contained many zeros in the skinthickness category.
+Multiple classification models were evaluated, including Support Vector Machines (SVM), K-Nearest Neighbors (KNN), and Decision Trees, to identify the most effective approach for diabetes prediction.
 
-## Machine Learning Pipeline
-I split the data into train/test sets, encoded categorical data, and normalized numeric data. I performed hyperparameter tuning for a Support Vector Machine (SVM) classifier using Grid Search with 5-fold cross-validation. I then evaluated the scores from GridSearchCV to diagnose any bias-variance problems. The results showed that between the train and test scores, there is very little difference or variance. What this means is that the model is good at predicting if an individual has diabetes. 
+The goal of this project is to demonstrate how healthcare data analytics and predictive modeling can support early risk identification and data-driven clinical decision-making.
 
-I then compared KNN and DecisionTree classifiers on my dataset and evaluated model performance. When the tree model, svm, and knn model are compared it is evident that the svm model is the best at predicting diabetes as most mean accuracies is over 78%, not only that but the standard deviation across train and test is low which indicates consistency across the model. Second to this is the knn model with an accuracy score of 0.744 or 74%. The decision tree is the lowest with 69%. The decision tree had significantly lower f1 scores than knn or svm as it had 0.77 for class 0 and 0.55 for class 1. Therefore the best overall model is the svm model. In the medical industry I would advocate for the svm model, although the model itself needs a higher score than 78% mean accuracy. However, it is efficient in predicting diabetes and would be beneficial for health professionals.
+---
+
+# Business Problem
+
+Diabetes is a widespread chronic condition where early detection and risk assessment can improve patient outcomes.
+
+Healthcare organizations face challenges including:
+
+- Identifying high-risk patients efficiently
+- Understanding relationships between patient characteristics and diabetes outcomes
+- Supporting preventative care through predictive analytics
+
+This project investigates:
+
+> **Can machine learning models accurately predict diabetes outcomes based on patient health indicators?**
+
+---
+
+# Dataset
+
+The analysis uses a diabetes dataset containing patient-level health measurements.
+
+## Features Analyzed
+
+Key predictors include:
+
+- Glucose levels
+- Blood pressure
+- Body Mass Index (BMI)
+- Insulin levels
+- Skin thickness
+- Age
+- Pregnancy history
+- Diabetes pedigree function
+
+Target variable:
+
+- Diabetes outcome classification
+
+---
+
+# Analytical Approach
+
+## 1. Data Exploration & Cleaning
+
+Initial exploratory data analysis was performed to understand:
+
+- Dataset structure
+- Feature distributions
+- Missing values
+- Relationships between health indicators
+
+Data preprocessing included:
+
+- Identifying invalid zero values
+- Handling missing values using median imputation
+- Preparing features for machine learning models
+
+Tools:
+
+- Python
+- Pandas
+- NumPy
+
+---
+
+# 2. Exploratory Data Analysis
+
+Analyzed relationships between clinical variables including:
+
+## Blood Pressure Analysis
+
+Examined blood pressure distributions to identify common patient patterns and detect invalid measurements.
+
+## BMI & Blood Pressure Relationship
+
+Performed correlation analysis to evaluate relationships between body composition and cardiovascular indicators.
+
+Key finding:
+
+- Higher BMI generally correlated with increased blood pressure, although variation existed across patient groups.
+
+---
+
+# 3. Machine Learning Pipeline
+
+A supervised machine learning pipeline was developed to classify diabetes outcomes.
+
+## Data Processing
+
+Steps included:
+
+- Train/test split
+- Feature normalization
+- Data preprocessing
+- Model evaluation
+
+---
+
+# Models Evaluated
+
+## Support Vector Machine (SVM)
+
+A Support Vector Machine classifier was optimized using:
+
+- GridSearchCV
+- 5-fold cross-validation
+- Hyperparameter tuning
+
+Results:
+
+- Highest predictive performance among evaluated models
+- Strong consistency between training and testing performance
+
+---
+
+## K-Nearest Neighbors (KNN)
+
+Evaluated as a distance-based classification approach.
+
+Performance:
+
+- Achieved approximately 74% accuracy
+- Demonstrated reliable classification performance
+
+---
+
+## Decision Tree
+
+Evaluated for interpretability and rule-based prediction.
+
+Performance:
+
+- Lower accuracy compared to SVM and KNN
+- Lower F1 score for diabetes-positive classification
+
+---
+
+# Model Performance
+
+| Model | Accuracy | Evaluation |
+|---|---|---|
+| Support Vector Machine | ~78% | Best overall performance |
+| K-Nearest Neighbors | ~74% | Strong baseline model |
+| Decision Tree | ~69% | Lower predictive performance |
+
+---
+
+# Key Insights
+
+## Clinical Factors Influence Diabetes Risk
+
+Patient health indicators such as glucose, BMI, insulin, and age provide meaningful signals for predicting diabetes outcomes.
+
+---
+
+## Machine Learning Can Support Risk Identification
+
+The SVM model demonstrated that predictive analytics can help identify individuals at increased risk of diabetes based on available clinical information.
+
+---
+
+## Predictive Models Require Clinical Validation
+
+Although the model showed promising performance, additional improvements and validation using larger clinical datasets would be necessary before healthcare deployment.
+
+---
+
+# Technologies
+
+## Programming
+
+- Python
+
+## Data Analysis
+
+- Pandas
+- NumPy
+
+## Machine Learning
+
+- Scikit-learn
+- Support Vector Machines
+- K-Nearest Neighbors
+- Decision Trees
+- GridSearchCV
+
+## Visualization
+
+- Matplotlib
+
+---
+
+# Repository Structure
+
+```
+Diabetes-Outcome-Analysis/
+
+│
+├── README.md
+│
+├── diabetes.csv
+│
+└── diabetes_outcome_analysis.ipynb
+```
+
+---
+
+# Skills Demonstrated
+
+- Healthcare Analytics
+- Predictive Modeling
+- Hyperparameter Optimization
+
+---
+
+# Future Improvements
+
+Potential extensions include:
+
+- Testing additional models such as XGBoost, and Neural Networks
+- Using larger clinical datasets for validation
+
+---
+
+# Project Impact
+
+This project demonstrates how machine learning can transform healthcare data into predictive insights.
+
+By combining exploratory analysis, preprocessing techniques, and classification models, this analysis provides a framework for identifying diabetes risk factors and supporting data-driven healthcare decision-making.
